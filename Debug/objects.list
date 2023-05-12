@@ -1,6 +1,7 @@
 "./Core/Src/dma.o"
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"
+"./Core/Src/shell.o"
 "./Core/Src/stm32f7xx_hal_msp.o"
 "./Core/Src/stm32f7xx_it.o"
 "./Core/Src/syscalls.o"
@@ -26,4 +27,3 @@
 "./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o"
 "./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o"
 "./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart_ex.o"
-"./Drivers/Shell/shell.o"
