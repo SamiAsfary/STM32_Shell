@@ -8,9 +8,33 @@
 #ifndef INC_SHELL_H_
 #define INC_SHELL_H_
 
+#include "usart.h"
+#include "stm32f7xx_hal_uart.h"
+
 #define SH_HISTORY_LEN 10
 #define SH_COMMAND_LEN 50
+#define SH_ARGC_MAX 6
+#define SH_MAX_FUNCTION 25
 
+typedef struct{
+	char *string_cmd;
+	void (*cmd_function)(uint8_t argc, char ** argv);
+	char *cmd_description;
+}h_cmd_t;
+
+typedef struct{
+	h_cmd_t function_list[SH_MAX_FUNCTION];
+	uint8_t function_count;
+	UART_HandleTypeDef *hal_huart;
+	char sh_cmd_current[SH_COMMAND_LEN];
+	char sh_cmd_history[SH_HISTORY_LEN][SH_COMMAND_LEN];
+	uint8_t sh_cmd_ptr;
+	uint8_t sh_cmd_cnt;
+	uint8_t sh_line_ptr;
+}h_shell_t;
+
+void sh_init();
 void sh_run();
+void sh_command_resolve();
 
 #endif /* INC_SHELL_H_ */

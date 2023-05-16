@@ -90,7 +90,7 @@ int main(void)
   MX_DMA_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  sh_init(&huart1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
