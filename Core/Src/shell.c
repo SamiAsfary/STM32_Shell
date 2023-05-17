@@ -31,7 +31,9 @@ void sh_run(){
 		case '\r' :
 			HAL_UART_Transmit(h_shell.hal_huart, "\r\n", 2, HAL_MAX_DELAY);
 			h_shell.sh_cmd_current[h_shell.sh_line_ptr] = '\0';
-			//sh_command_resolve();
+			if(h_shell.sh_line_ptr != 0){
+				sh_command_resolve();
+			}
 			HAL_UART_Transmit(h_shell.hal_huart, sh_new_line, 2, HAL_MAX_DELAY);
 			h_shell.sh_line_ptr = 0;
 			break;
@@ -55,6 +57,20 @@ void sh_run(){
 }
 
 void sh_command_resolve(){
+	char i = 1, last_space=0, argc = 0;
+	char argv[SH_ARGC_MAX][SH_COMMAND_LEN];
+	while(h_shell.sh_cmd_current[i-1] != '\0'){
+		if(h_shell.sh_cmd_current[i] == ' ' || h_shell.sh_cmd_current[i] == '\0'){
+		for(char j = last_space; j < i; j++){
+				argv[argc][j-last_space] = h_shell.sh_cmd_current[j];
+			}
+			argv[argc][i-last_space] = '\0';
+			last_space = i+1;
+			argc++;
+		}
+		i++;
+	}
+
 
 }
 
