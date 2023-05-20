@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "shell.h"
+#include "fctn.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,6 +96,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   sh_init(&huart1);
+  sh_add("valueof", shfctn_valuereturn, "return the value of the char in a string\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,7 +104,6 @@ int main(void)
   while (1)
   {
 	  sh_run();
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

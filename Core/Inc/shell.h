@@ -14,11 +14,14 @@
 #define SH_HISTORY_LEN 10
 #define SH_COMMAND_LEN 50
 #define SH_ARGC_MAX 6
+#define SH_ARGV_LEN 10
 #define SH_MAX_FUNCTION 25
+
+typedef char argv_t[SH_ARGC_MAX][SH_ARGV_LEN];
 
 typedef struct{
 	char *string_cmd;
-	void (*cmd_function)(uint8_t argc, char ** argv);
+	void (*pcmd_function)(uint8_t argc, argv_t argv);
 	char *cmd_description;
 }h_cmd_t;
 
@@ -33,6 +36,9 @@ typedef struct{
 	uint8_t sh_line_ptr;
 }h_shell_t;
 
+void sh_write(const char * str, char lenght);
+void shfctn_help(uint8_t argc, argv_t argv);
+void sh_add();
 void sh_init();
 void sh_run();
 void sh_command_resolve();

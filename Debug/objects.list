@@ -1,4 +1,5 @@
 "./Core/Src/dma.o"
+"./Core/Src/fctn.o"
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"
 "./Core/Src/shell.o"
