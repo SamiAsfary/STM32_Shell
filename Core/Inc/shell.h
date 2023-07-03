@@ -19,6 +19,14 @@
 
 typedef char argv_t[SH_ARGC_MAX][SH_ARGV_LEN];
 
+typedef uint8_t (* drv_shell_transit_t)(char * pData, uint16_t size);
+typedef uint8_t (* drv_shell_receive_t)(char * pData, uint16_t size);
+
+typedef struct{
+	drv_shell_receive_t drv_shell_receive;
+	drv_shell_transit_t drv_shell_transit;
+}drv_shell_t;
+
 typedef struct{
 	char *string_cmd;
 	void (*pcmd_function)(uint8_t argc, argv_t argv);

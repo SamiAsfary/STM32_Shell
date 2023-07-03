@@ -14,6 +14,7 @@ static const char sh_new_line[] = "> ";
 char sh_welcome_text[] = "\r\n***********************\r\n*                     *\r\n*     shell v1.0      *\r\n*     Sami Asfary     *\r\n*                     *\r\n***********************\r\n";
 
 static h_shell_t h_shell;
+drv_shell_t drv_shell_struct;
 
 void sh_write(const char * str, char lenght){
 	HAL_UART_Transmit(h_shell.hal_huart, (uint8_t*) str, lenght, HAL_MAX_DELAY);
