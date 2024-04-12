@@ -17,6 +17,8 @@
 #define SH_ARGV_LEN 10
 #define SH_MAX_FUNCTION 25
 
+#define SH_FLAG_HISTORYUSED 0b00000001
+
 typedef char argv_t[SH_ARGC_MAX][SH_ARGV_LEN];
 
 typedef uint8_t (* drv_shell_transit_t)(char * pData, uint16_t size);
@@ -42,13 +44,19 @@ typedef struct{
 	uint8_t sh_cmd_ptr;
 	uint8_t sh_cmd_cnt;
 	uint8_t sh_line_ptr;
+	uint8_t history_commandNb;
+	uint8_t sh_flag;
 }h_shell_t;
 
 void sh_write(const char * str, char lenght);
+void sh_write_len(const char * str);
+void shfctn_history(uint8_t argc, argv_t argv);
 void shfctn_help(uint8_t argc, argv_t argv);
 void sh_add();
 void sh_init();
 void sh_run();
 void sh_command_resolve();
+
+
 
 #endif /* INC_SHELL_H_ */
